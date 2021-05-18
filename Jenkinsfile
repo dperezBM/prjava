@@ -1,15 +1,17 @@
 pipeline {
   agent any
-
+  environment {
+    NOMBRE = "test"
+  }
   stages {
     stage('compilar') {
       steps {
-        sh 'javac Simple.java'
+        sh 'javac Param.java'
       }
      }
     stage('ejecutar'){
       steps{
-        sh 'java Simple'
+        sh 'java Param ${NOMBRE}'
       }
     }
   }
